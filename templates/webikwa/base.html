@@ -1,0 +1,103 @@
+{% load static wagtailcore_tags template_settings %}
+
+<!DOCTYPE html>
+{% if page %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>
+            {% block title %}
+              {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
+            {% endblock %}
+            {% block title_suffix %}
+              {% wagtail_site as current_site %}
+              {% if current_site and current_site.site_name %}- {{ current_site.site_name }}{% endif %}
+            {% endblock %}
+        </title>
+        {% if page.search_description %}
+        <meta name="description" content="{{ page.search_description }}" />
+        {% endif %}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}{% wagtail_site as current_site %}{% if current_site and current_site.site_name %}- {{ current_site.site_name }}{% endif %}" />
+        <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+        <meta property="og:description" content="{{ page.summary }}" />
+
+        {% if page.gallery_images.first %}
+          <meta property="og:image" content="{{ page.gallery_images.first.image.file.url }}" />
+        {% endif %}
+
+        {# Force all links in the live preview panel to be opened in a new tab #}
+        {% if request.in_preview_panel %}
+        <base target="_blank">
+        {% endif %}
+
+
+        {% get_template_settings as template_settings %}
+        <!-- link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍩</text></svg>"/ -->
+        {% with favicon=template_settings.favicon %}
+          {% if favicon|slice:7 == "static:" %}
+            <link rel="icon" href="{% static favicon|slice:"7:"" %}">
+          {% else %}
+            <link rel="icon" href="{{ favicon }}">
+        {% endif %}
+        {% endwith %}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'webikwa/css/'|add:template_settings.theme_color|add:'.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'webikwa/css/webikwa.css' %}">
+
+        {% block extra_css %}
+
+        {% endblock %}
+        {% block head_js %}
+        {% endblock %}
+    </head>
+
+    <body class="{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}">
+        {% block header %}
+            {% include "webikwa/includes/header.html" with image=page.gallery_images.first %}
+        {% endblock header %}
+        {% block messages %}
+          {% include "webikwa/includes/messages.html" %}
+        {% endblock messages %}
+
+
+        <main id="main">
+          {% if template_settings.show_leftbar %}
+            <div id="leftsidebar" class="sidebar">
+              {% block leftsidebar %}
+                {% include "webikwa/includes/sidebar.html" with side="left" %}
+              {% endblock %}
+            </div>
+          {% endif %}
+          <div id="content">
+            {% block content %}
+            {% endblock content %}
+          </div>
+          {% if template_settings.show_rightbar %}
+            <div id="rightsidebar" class="sidebar">
+              {% block rightsidebar %}
+                {% include "webikwa/includes/sidebar.html" with side="right" %}
+              {% endblock %}
+            </div>
+          {% endif %}
+
+        </main>
+
+      {% block footer %}
+        {% include "webikwa/includes/footer.html" %}
+      {% endblock footer %}
+
+
+
+
+        {% block extra_js %}
+        {# Override this in templates to add extra javascript #}
+        {% endblock %}
+    </body>
+</html>
+{% endif %}

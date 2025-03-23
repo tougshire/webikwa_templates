@@ -1,0 +1,19 @@
+{% extends "webikwa/base.html" %}
+{% load static %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-articleindexpage{% endblock %}
+
+{% block content %}
+  {% if page.show_title %}<h1 class="pagetitle">{{ page.title }}</h1>{% endif %}
+  <div class="intro">{{ page.intro|richtext }}</div>
+    <div class="articles">
+      {% for articlepage  in articlepages %}
+        {% with article_page=articlepage.specific %}
+          {% include "webikwa/includes/article_indexentry.html" %}
+        {% endwith %}
+      {% endfor %}
+    </div>
+  </div>
+
+{% endblock %}
