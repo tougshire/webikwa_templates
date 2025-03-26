@@ -3,13 +3,14 @@
 
 <div class="article">
   <div class="articletitle"><a href="{% pageurl article_page %}">{{ article_page.title }}</a></div>
-    {% if article_page.show_main_image  %}
-      {% image article_page.main_image.image width-800 as main_image %}
-      <div class="articleimage">
-        <a href="{% pageurl article_page %}"><img src="{{ main_image.url }}" width="80%" alt="{% if article_page.main_image.alt_text %}{{ article_page.main_image.alt_text }}{% else %}{{ main_image.image.title }}{% endif %}"></a>
-      </div>
-    {% endif %}
-
+  {% for article_image in page.article_images.all %}
+  {% if article_image.display_with_summary %}
+    {% image article_image.image width-800 as article_image_image %}
+    <div class="articleimage">
+      <img src="{{ article_image_image.url }}" width="80%" alt="{{ article_image.alt_text }}"></a>
+    </div>
+  {% endif %}
+{% endfor %}
     <div class="articlesummary">
 
       {% if forloop.parentloop.parentloop.counter <= page.show_body_in_index %}
