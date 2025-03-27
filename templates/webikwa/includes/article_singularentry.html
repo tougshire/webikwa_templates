@@ -19,7 +19,7 @@
 {% endwith %}
 
 {% for article_image in page.article_images.all %}
-  {% if article_image.display_before_body %}
+  {% if article_image.display_after_body %}
     {% image article_image.image width-800 as article_image_image %}
     <div class="articleimage">
       <img src="{{ article_image_image.url }}" width="80%" alt="{{ article_image.alt_text }}"></a>
@@ -27,7 +27,6 @@
   {% endif %}
 {% endfor %}
 
-{{ page.body_md }}
 {% if page.body_md > "" %}
     {{ page.body_md|markdown }}
 {% endif %}
