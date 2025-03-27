@@ -3,7 +3,7 @@
 
 <div class="article">
   <div class="articletitle"><a href="{% pageurl article_page %}">{{ article_page.title }}</a></div>
-  {% for article_image in page.article_images.all %}
+  {% for article_image in article_page.article_images.all %}
   {% if article_image.display_with_summary %}
     {% image article_image.image width-800 as article_image_image %}
     <div class="articleimage">
