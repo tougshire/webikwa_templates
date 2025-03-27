@@ -1,4 +1,4 @@
-{% load static wagtailcore_tags template_settings %}
+{% load static template_settings wagtailcore_tags wagtailimages_tags %}
 
 <!DOCTYPE html>
 {% if page %}
@@ -24,9 +24,16 @@
         <meta property="og:url" content="{{ request.build_absolute_uri }}" />
         <meta property="og:description" content="{{ page.summary }}" />
 
-        {% if page.gallery_images.first %}
+        {% for article_image in page.article_images.all %}
+          {% if article_image.is_featured %}
+            {% image article_image.image width-800 as article_image_image %}
+            <meta property="og:image" content="{{ article_image_image.url }}" />
+          {% endif %}
+        {% endfor %}
+
+        {% comment %} { % if page.gallery_images.first %}
           <meta property="og:image" content="{{ page.gallery_images.first.image.file.url }}" />
-        {% endif %}
+        { % endif %}{% endcomment %}
 
         {# Force all links in the live preview panel to be opened in a new tab #}
         {% if request.in_preview_panel %}
