@@ -50,6 +50,9 @@
 
         <link rel="stylesheet" type="text/css" href="{% static 'webikwa/css/'|add:template_settings.theme_color|add:'.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'webikwa/css/webikwa.css' %}">
+        {% if page.custom_css %}
+          <style type="text/css">{{ page.custom_css }}</style>
+        {% endif %}
 
         {% block extra_css %}
 

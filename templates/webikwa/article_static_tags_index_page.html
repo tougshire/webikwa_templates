@@ -11,11 +11,7 @@
   <div class="articlegroups">
     {% for article_page_group in article_page_groups %}
 
-        {% if forloop.first and page.apply_special_formatting %}
-          <div class="specarticlegroup">
-        {% else %}
-          <div class="articlegroup">
-        {% endif %}
+        <div class="articlegroup articlegroup_{{ forloop.counter }}">
         {% if article_page_group.group_title %}<h2 class="grouptitle">{{ article_page_group.group_title }}</h2>{% endif %}
         <div class="articlesets">
           {% for article_page_set in article_page_group.article_page_sets %}
