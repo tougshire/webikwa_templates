@@ -84,6 +84,36 @@ a.brand-logo {
     text-decoration: none;
 }
 
+.horizontalbar {
+    text-align:center;
+    margin-top:0;
+}
+
+.horizontalbar nav {
+    margin-top:0;
+    text-align:center;
+    margin: 0 auto;
+}
+
+.horizontalbar nav ul {
+    margin-top:0;
+    display:flex;
+    justify-content: space-around;
+    list-style-type: none;
+    list-style-position: unset;
+}
+
+
+.horizontalbar li.menuitem, .horizontalbar li.menuitem a {
+    list-style-type: none;
+    text-decoration: none;
+    font-weight:600;
+    font-size:1.2em;
+    line-height: 2em;
+    color: var(--theme-main-font-color);
+}
+
+
 .sidebar ul {
     margin-top:0;
 }

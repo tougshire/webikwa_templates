@@ -68,8 +68,13 @@
         {% block messages %}
           {% include "webikwa/includes/messages.html" %}
         {% endblock messages %}
-
-
+        {% if template_settings.show_topbar %}
+          <div id="topbar" class="horizontalbar">
+            {% block topbar %}
+              {% include "webikwa/includes/sidebar.html" with side="top" %}
+            {% endblock %}
+          </div>
+        {% endif %}
         <main id="main">
           {% if template_settings.show_leftbar %}
             <div id="leftsidebar" class="sidebar">
@@ -91,17 +96,19 @@
           {% endif %}
 
         </main>
-
+        {% if template_settings.show_topbar %}
+          <div id="bottombar" class="horizontalbar">
+            {% block bottombar %}
+              {% include "webikwa/includes/sidebar.html" with side="bottom" %}
+            {% endblock %}
+        </div>
+      {% endif %}
       {% block footer %}
         {% include "webikwa/includes/footer.html" %}
-      {% endblock footer %}
-
-
-
-
-        {% block extra_js %}
+      {% endblock %}
+      {% block extra_js %}
         {# Override this in templates to add extra javascript #}
-        {% endblock %}
+      {% endblock %}
     </body>
 </html>
 {% endif %}
