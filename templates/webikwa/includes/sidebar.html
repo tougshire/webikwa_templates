@@ -5,7 +5,7 @@
 {% for sidebar in sidebars %}
   {% if sidebar.location == side %}
     {% for child in sidebar.children %}
-      {% if child.show_title %}
+      {% if child.context.page.show_title %}
         <h4>{{ child.title }}</h4>
       {% endif %}
       {% if child.body_md > '' %}
