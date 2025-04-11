@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class WebikwaBaseConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'webikwa_base'
+    name = 'webikwa_templates'
