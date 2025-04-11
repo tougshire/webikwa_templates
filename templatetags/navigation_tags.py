@@ -2,7 +2,7 @@ from django import template
 
 from wagtail.models import Site
 
-from webikwa_base.models import FooterText
+from webikwa_templates.models import FooterText
 
 register = template.Library()
 
