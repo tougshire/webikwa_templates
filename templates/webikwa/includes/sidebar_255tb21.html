@@ -1,0 +1,54 @@
+{% load wagtailcore_tags navigation_tags wagtailmarkdown %}
+{% if template_settings.mainmenu_location == side %}
+  {% include "webikwa/includes/mainmenu.html" %}
+{% endif %}
+{% for sidebar in sidebars %}
+  {% if sidebar.location == side %}
+    {% for child in sidebar.children %}
+      {% if child.context.page.show_title %}
+        <h4>{{ child.title }}</h4>
+      {% endif %}
+      {% if child.body_md > '' %}
+        {{ child.body_md|markdown }}
+      {% endif %}
+      {% if child.body_sf %}
+        {% include_block page.body_sf %}
+      {% endif %}
+      {% if child.context.embed_url %}
+          <iframe src="{{ child.context.embed_url }}" style="{{ child.context.embed_frame_style }}"></iframe>
+      {% endif %}
+      {% comment %}
+      {% if child.context.events %}
+        {% include 'webikwa/includes/sidebar.html' %}
+        {% if child.calendar_format == "EVLS" %}
+          <ul class="event">
+            {% for event in child.context.events %}
+              <li>
+                <div>{{ event.start }}</div>
+                <div>{{ event.summary }}</div>
+              </li>
+            {% endfor %}
+          </ul>
+        {% elif child.calendar_format == "DTLS" %}
+          {% regroup child.context.events by start_d as events_bydate %}
+          {% for event_date in events_bydate %}
+            <ul class="event-date">
+              <li>
+                {{ event_date.grouper|date:"M d" }}
+                <ul class="event">
+                  {% for event in event_date.list %}
+                    <li>
+                      {% if event.start_type == "datetime" %}{{ event.start|date:"g:iA" }} {% endif %}{{ event.summary }}
+                    </li>
+                  {% endfor %}
+                </ul>
+              </li>
+            </ul>
+          {% endfor %}
+        {% endif %}
+      {% endif %}
+      {% endcomment %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+

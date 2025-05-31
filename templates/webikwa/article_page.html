@@ -57,6 +57,12 @@
       {% endif %}
     {% endif %}
 
+    {% if events %}
+      {% for event in events %}
+        {{ event }}
+      {% endfor %}
+    {% endif %}
+
     {% for article_image in page.article_images.all %}
         {% if article_image.display_after_body %}
           {% image article_image.image width-800 as article_image_image %}
