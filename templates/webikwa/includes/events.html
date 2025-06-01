@@ -1,26 +1,37 @@
-
-{% if child.calendar_format == "EVLS" %}
-    {% regroup child.context.events by summary as events_bysummary %}
-    {% for event_summary in events_bysummary %}
+{% if page.calendar_format == "EVLS" %} 
     <ul class="event-summary">
-        <li>
-            {{ event_summary.grouper }}
-            <ul class="event-date">
-                {% for event in event_summary.list %}
-                <li>
-                    {% if event.start_type == "datetime" %}
-                        {{ event.start|date:" M d g:iA" }}
-                    {% else %} 
-                        {{ event.start_d }}
+        {% for event in events_grouped %}
+            <li>
+                {% if event.link %}
+                    <a href="{{ event.link|safe }}">{{ event.summary }}</a>
+                {% else %}
+                    {% if event.description %}
+                        <a name="a_{{ event.uid }}" href="#a_{{ event.uid }}" onclick="document.getElementById('div_descr_{{ event.uid }}').style.display='block'">
+                            {{ event.summary }}
+                        </a>
+                        <div id="div_descr_{{ event.uid }}" style="display:none">
+                            {{ event.description|striptags|safe }}
+                        </div>
+                    {% else %}
+                        {{ event.summary }}
                     {% endif %}
-                </li>
-                {% endfor %}
-            </ul>
-        </li>
+                {% endif %}
+                <ul>
+                    {% for start in event.starts %}
+                        <li>
+                            {% if start.day %}
+                                {{ start|date:"M d g:iA" }}
+                            {% else %}
+                                {{ start|date:"M d" }}
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
     </ul>
-    {% endfor %}
-{% elif child.calendar_format == "DTLS" %}
-    {% regroup child.context.events by start_d as events_bydate %}
+{% elif page.calendar_format == "DTLS" %}
+    {% regroup events by start_d as events_bydate %}
     {% for event_date in events_bydate %}
     <ul class="event-date">
         <li>
@@ -29,7 +40,21 @@
                 {% for event in event_date.list %}
                 <li>
                     {% if event.start_type == "datetime" %}{{ event.start|date:"g:iA" }} {% endif %}
-                    {% if event.link %}<a href="{{ event.link|safe }}">{{ event.summary }}</a>{% else %}{{ event.summary}}{% endif %}
+                {% if event.link %}
+                    <a href="{{ event.link|safe }}">{{ event.summary }}</a>
+                {% else %}
+                    {% if event.description %}
+                        <a name="a_{{ event.uid }}" href="#a_{{ event.uid }}" onclick="document.getElementById('div_descr_{{ event.uid }}').style.display='block'">
+                            {{ event.summary }}
+                        </a>
+                        <div id="div_descr_{{ event.uid }}" style="display:none">
+                            {{ event.description|striptags|safe }}
+                        </div>
+                    {% else %}
+                        {{ event.summary }}
+                    {% endif %}
+                {% endif %}
+
                 </li>
                 {% endfor %}
             </ul>

@@ -72,6 +72,11 @@
   {% endif %}
 {% endif %}
 
+{% if events %}
+  {% include "webikwa/includes/events.html" with page=page %}
+{% endif %}
+
+
 {% if visible_tags %}
   <div class="tags">
     <h3>Tags</h3>

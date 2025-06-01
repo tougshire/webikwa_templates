@@ -18,7 +18,7 @@
           <iframe src="{{ child.context.embed_url }}" style="{{ child.context.embed_frame_style }}"></iframe>
       {% endif %}
       {% if child.context.events %}
-        {% include "webikwa/includes/events.html" %}
+        {% include "webikwa/includes/events.html" with page=child events=child.context.events events_grouped=child.context.events_grouped %}
       {% endif %}
       {% endfor %}
   {% endif %}
