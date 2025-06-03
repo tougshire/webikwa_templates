@@ -19,7 +19,7 @@
                 <ul>
                     {% for start in event.starts %}
                         <li>
-                            {% if start.day %}
+                            {% if start.hour %}
                                 {{ start|date:"M d g:iA" }}
                             {% else %}
                                 {{ start|date:"M d" }}
@@ -39,21 +39,34 @@
             <ul class="event">
                 {% for event in event_date.list %}
                 <li>
-                    {% if event.start_type == "datetime" %}{{ event.start|date:"g:iA" }} {% endif %}
-                {% if event.link %}
-                    <a href="{{ event.link|safe }}">{{ event.summary }}</a>
-                {% else %}
-                    {% if event.description %}
-                        <a name="a_{{ event.uid }}" href="#a_{{ event.uid }}" onclick="document.getElementById('div_descr_{{ event.uid }}').style.display='block'">
-                            {{ event.summary }}
-                        </a>
-                        <div id="div_descr_{{ event.uid }}" style="display:none">
-                            {{ event.description|striptags|safe }}
-                        </div>
-                    {% else %}
-                        {{ event.summary }}
+                    {% if event.start.hour %}
+                        {{ event.start|date:"g:iA" }} 
                     {% endif %}
-                {% endif %}
+                    {% if event.link %}
+                        <a href="{{ event.link|safe }}">{{ event.summary }}</a>
+                    {% else %}
+                        {% if event.description %}
+                            <a id="a_{{ event.uid }}" href="a_{{ event.uid }}" >
+                                {{ event.summary }}
+                            </a>
+                            <div id="div_descr_{{ event.uid }}" style="display:none">
+                                {{ event.description|striptags|safe }}
+                            </div>
+                            <script>
+                                document.getElementById("a_{{ event.uid }}").addEventListener('click', function(e) {
+                                    e.preventDefault()
+                                    description = document.getElementById('div_descr_{{ event.uid }}')
+                                    if(description.style.display=="none") {
+                                        description.style.display="block"
+                                    } else {
+                                        description.style.display="none"
+                                    }
+                                })
+                            </script>
+                        {% else %}
+                            {{ event.summary }}
+                      {% endif %}
+                    {% endif %}
 
                 </li>
                 {% endfor %}
