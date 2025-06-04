@@ -1,3 +1,4 @@
+
 {% if page.calendar_format == "EVLS" %} 
     <ul class="event-summary">
         {% for event in events_grouped %}
@@ -20,9 +21,9 @@
                     {% for start in event.starts %}
                         <li>
                             {% if start.hour %}
-                                {{ start|date:"D Y M d g:iA" }}
+                                {{ start|date:datetime_formats.datetime }}
                             {% else %}
-                                {{ start|date:"D Y M d" }}
+                                {{ start|date:datetime_formats.date }}
                             {% endif %}
                         </li>
                     {% endfor %}
@@ -35,12 +36,12 @@
     {% for event_date in events_bydate %}
     <ul class="event-date">
         <li>
-            {{ event_date.grouper|date:"D Y M d" }}
+            {{ event_date.grouper|date:datetime_formats.date }}
             <ul class="event">
                 {% for event in event_date.list %}
                 <li>
                     {% if event.start.hour %}
-                        {{ event.start|date:"g:iA" }} 
+                        {{ event.start|date:datetime_formats.time }}
                     {% endif %}
                     {% if event.link %}
                         <a href="{{ event.link|safe }}">{{ event.summary }}</a>
