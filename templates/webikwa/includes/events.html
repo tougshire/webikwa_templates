@@ -20,9 +20,9 @@
                     {% for start in event.starts %}
                         <li>
                             {% if start.hour %}
-                                {{ start|date:"M d g:iA" }}
+                                {{ start|date:"D Y M d g:iA" }}
                             {% else %}
-                                {{ start|date:"M d" }}
+                                {{ start|date:"D Y M d" }}
                             {% endif %}
                         </li>
                     {% endfor %}
@@ -35,7 +35,7 @@
     {% for event_date in events_bydate %}
     <ul class="event-date">
         <li>
-            {{ event_date.grouper|date:"Y M d" }}
+            {{ event_date.grouper|date:"D Y M d" }}
             <ul class="event">
                 {% for event in event_date.list %}
                 <li>
