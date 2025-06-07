@@ -96,14 +96,15 @@ a.brand-logo {
     border-bottom:5px solid var(--theme-main-font-color);
 }
 
-.horizontalbar nav ul {
-    margin:0 auto;
-    display:flex;
-    justify-content: space-around;
-    list-style-type: none;
-    list-style-position: unset;
+@media (min-width: 1000px) {
+    .horizontalbar nav ul {
+        margin:0 auto;
+        display:flex;
+        justify-content: space-around;
+        list-style-type: none;
+        list-style-position: unset;
+    }
 }
-
 
 .horizontalbar li.menuitem, .horizontalbar li.menuitem a {
     list-style-type: none;
