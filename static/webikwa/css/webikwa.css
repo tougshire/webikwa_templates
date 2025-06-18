@@ -105,6 +105,13 @@ a.brand-logo {
     border-bottom:5px solid var(--theme-main-font-color);
 }
 
+.horizontalbar nav ul {
+    margin:0;
+    padding: 0;
+    list-style-type: none;
+    list-style-position: unset;
+}
+
 @media (min-width: 1000px) {
     .horizontalbar nav ul {
         margin:0 auto;
@@ -123,7 +130,6 @@ a.brand-logo {
     line-height: 2em;
     color: var(--theme-main-font-color);
 }
-
 
 .sidebar ul {
     margin-top:0;
