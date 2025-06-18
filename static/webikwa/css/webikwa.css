@@ -43,6 +43,15 @@ main #content {
     min-width:300px;
 }
 
+@media screen and (max-width: 600px) {
+main #content {
+    order: 1;
+}
+#main .sidebar {
+    order: 2
+}
+}
+
 .sidebar a {
     font-family:"-apple-system","BlinkMacSystemFont","Segoe UI","system-ui","Roboto","Helvetica Neue","Arial",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     text-decoration: none;
