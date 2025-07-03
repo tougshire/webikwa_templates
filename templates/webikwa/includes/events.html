@@ -14,9 +14,10 @@
                         <div id="div_descr_{{ event.uid }}" style="display:none">
                             {{ event.description|striptags|safe }}
                         </div>
-                        {% endcomment %}
                         <a href="{% pageurl calendar %}">{{ event.summary }}</a>
-                    {% else %}
+                        {% endcomment %}
+
+                        {% else %}
                         {{ event.summary }}
                     {% endif %}
                 {% endif %}
