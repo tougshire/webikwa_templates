@@ -1,6 +1,6 @@
 {% load wagtailcore_tags navigation_tags wagtailmarkdown %}
 {% if template_settings.mainmenu_location == side %}
-  {% include "webikwa/includes/mainmenu.html" %}
+  {% include "webikwa257/includes/mainmenu.html" %}
 {% endif %}
 {% for sidebar in sidebars %}
   {% if sidebar.location == side %}
@@ -19,7 +19,7 @@
       {% endif %}
       {% comment %}
       {% if child.context.events %}
-        {% include 'webikwa/includes/sidebar.html' %}
+        {% include 'webikwa257/includes/sidebar.html' %}
         {% if child.calendar_format == "EVLS" %}
           <ul class="event">
             {% for event in child.context.events %}

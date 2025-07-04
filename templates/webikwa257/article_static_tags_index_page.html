@@ -1,4 +1,4 @@
-{% extends "webikwa/base.html" %}
+{% extends "webikwa257/base.html" %}
 {% load static %}
 {% load wagtailcore_tags wagtailimages_tags %}
 
@@ -19,7 +19,7 @@
               {% if page.show_tag_titles %}<h2>{{ article_page_set.title }}</h2>{% endif %}
               <div class="articles">
                 {% for article_page in article_page_set.article_pages %}
-                  {% include "webikwa/includes/article_indexentry.html" %}
+                  {% include "webikwa257/includes/article_indexentry.html" %}
                 {% endfor %}
               </div>
             </div>

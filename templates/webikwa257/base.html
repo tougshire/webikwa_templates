@@ -48,8 +48,8 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
-        <link rel="stylesheet" type="text/css" href="{% static 'webikwa/css/'|add:template_settings.theme_color|add:'.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'webikwa/css/webikwa.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'webikwa257/css/'|add:template_settings.theme_color|add:'.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'webikwa257/css/webikwa257.css' %}">
         {% if page.custom_css %}
           <style type="text/css">{{ page.custom_css }}</style>
         {% endif %}
@@ -63,15 +63,15 @@
 
     <body class="{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}">
         {% block header %}
-            {% include "webikwa/includes/header.html" with image=page.gallery_images.first %}
+            {% include "webikwa257/includes/header.html" with image=page.gallery_images.first %}
         {% endblock header %}
         {% block messages %}
-          {% include "webikwa/includes/messages.html" %}
+          {% include "webikwa257/includes/messages.html" %}
         {% endblock messages %}
         {% if template_settings.show_topbar %}
           <div id="topbar" class="horizontalbar">
             {% block topbar %}
-              {% include "webikwa/includes/sidebar.html" with side="top" %}
+              {% include "webikwa257/includes/sidebar.html" with side="top" %}
             {% endblock %}
           </div>
         {% endif %}
@@ -79,7 +79,7 @@
           {% if template_settings.show_leftbar %}
             <div id="leftsidebar" class="sidebar">
               {% block leftsidebar %}
-                {% include "webikwa/includes/sidebar.html" with side="left" %}
+                {% include "webikwa257/includes/sidebar.html" with side="left" %}
               {% endblock %}
             </div>
           {% endif %}
@@ -90,7 +90,7 @@
           {% if template_settings.show_rightbar %}
             <div id="rightsidebar" class="sidebar">
               {% block rightsidebar %}
-                {% include "webikwa/includes/sidebar.html" with side="right" %}
+                {% include "webikwa257/includes/sidebar.html" with side="right" %}
               {% endblock %}
             </div>
           {% endif %}
@@ -99,12 +99,12 @@
         {% if template_settings.show_topbar %}
           <div id="bottombar" class="horizontalbar">
             {% block bottombar %}
-              {% include "webikwa/includes/sidebar.html" with side="bottom" %}
+              {% include "webikwa257/includes/sidebar.html" with side="bottom" %}
             {% endblock %}
         </div>
       {% endif %}
       {% block footer %}
-        {% include "webikwa/includes/footer.html" %}
+        {% include "webikwa257/includes/footer.html" %}
       {% endblock %}
       {% block extra_js %}
         {# Override this in templates to add extra javascript #}

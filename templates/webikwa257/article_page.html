@@ -1,4 +1,4 @@
-{% extends "webikwa/base.html" %}
+{% extends "webikwa257/base.html" %}
 {% load static %}
 {% load wagtailcore_tags wagtailimages_tags %}
 {% load wagtailmarkdown %}
@@ -7,7 +7,7 @@
 
 {% block content %}
   {% with page=page.specific %}
-    {% include "webikwa/includes/article_singularentry.html" %}
+    {% include "webikwa257/includes/article_singularentry.html" %}
   {% endwith %}
 {% endblock %}
 
@@ -58,7 +58,7 @@
     {% endif %}
 
       {% if page.context.events %}
-        {% include "webikwa/includes/events.html" %}
+        {% include "webikwa257/includes/events.html" %}
       {% endif %}
 
     {% for article_image in page.article_images.all %}

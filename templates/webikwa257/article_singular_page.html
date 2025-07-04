@@ -1,4 +1,4 @@
-{% extends "webikwa/base.html" %}
+{% extends "webikwa257/base.html" %}
 {% load static %}
 {% load wagtailcore_tags wagtailimages_tags %}
 
@@ -6,6 +6,6 @@
 
 {% block content %}
   {% with page=page.target_page.specific %}
-    {% include "webikwa/includes/article_singularentry.html" %}
+    {% include "webikwa257/includes/article_singularentry.html" %}
   {% endwith %}
 {% endblock %}
