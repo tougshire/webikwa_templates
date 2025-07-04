@@ -44,7 +44,7 @@
             {{ event_date.grouper|date:datetime_formats.date }}
             <ul class="event">
                 {% for event in event_date.list %}
-                <li>
+                <li data-uid="{{ event.uid }}">
                     {% if event.start.hour %}
                         {{ event.start|date:datetime_formats.time }}
                     {% endif %}
