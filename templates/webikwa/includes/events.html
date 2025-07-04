@@ -1,5 +1,5 @@
 {% load wagtailcore_tags %}
-{% if page.calendar_format == "EVLS" %} 
+{% if page.calendar_format == "EVLS" or not page.calendar_format %} 
     <ul class="event-summary">
         {% for event in events_grouped %}
             <li>
@@ -14,8 +14,9 @@
                         <div id="div_descr_{{ event.uid }}" style="display:none">
                             {{ event.description|striptags|safe }}
                         </div>
-                        <a href="{% pageurl calendar %}">{{ event.summary }}</a>
                         {% endcomment %}
+
+                        <a href="{% pageurl calendar %}">{{ event.summary }}</a>
 
                         {% else %}
                         {{ event.summary }}
