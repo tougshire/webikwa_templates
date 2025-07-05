@@ -1,42 +1,4 @@
 {% load wagtailcore_tags %}
-{% if page.calendar_format == "EVLS" or not page.calendar_format %} 
-    <ul class="event-summary">
-        {% for event in events_grouped %}
-            <li>
-                {% if event.link %}
-                    <a href="{{ event.link|safe }}">{{ event.summary }}</a>
-                {% else %}
-                    {% if event.description %}
-                        {% comment %}
-                        <a name="a_{{ event.uid }}" href="#a_{{ event.uid }}" onclick="document.getElementById('div_descr_{{ event.uid }}').style.display='block'">
-                            {{ event.summary }}
-                        </a>
-                        <div id="div_descr_{{ event.uid }}" style="display:none">
-                            {{ event.description|striptags|safe }}
-                        </div>
-                        {% endcomment %}
-
-                        <a href="{% pageurl calendar %}">{{ event.summary }}</a>
-
-                        {% else %}
-                        {{ event.summary }}
-                    {% endif %}
-                {% endif %}
-                <ul>
-                    {% for start in event.starts %}
-                        <li>
-                            {% if start.hour %}
-                                {{ start|date:datetime_formats.datetime }}
-                            {% else %}
-                                {{ start|date:datetime_formats.date }}
-                            {% endif %}
-                        </li>
-                    {% endfor %}
-                </ul>
-            </li>
-        {% endfor %}
-    </ul>
-{% elif page.calendar_format == "DTLS" %}
     {% regroup events by start_d as events_bydate %}
     {% for event_date in events_bydate %}
     <ul class="event-date">
@@ -80,4 +42,3 @@
         </li>
     </ul>
     {% endfor %}
-{% endif %}
