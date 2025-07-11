@@ -25,7 +25,7 @@
         <meta property="og:description" content="{{ page.summary }}" />
         {% if page.featured_image %}
             {% image page.featured_image.image width-800 as featured_image %}
-            <meta property="og:image" content="{{ request.build_absolute_uri }}{{ featured_image.url }}" />
+            <meta property="og:image" content="{{ page.get_site.root_url }}{{ featured_image.url }}" />
             <meta property="og:image:alt" content="{{page.featured_image.alt_text  }}" />
         {% endif %}
 
