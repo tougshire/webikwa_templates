@@ -18,8 +18,8 @@
           <iframe src="{{ child.context.embed_url }}" style="{{ child.context.embed_frame_style }}"></iframe>
       {% endif %}
       {% if child.context.events %}
-        {% include "webikwa257/includes/events.html" with page=child events=child.context.events events_grouped=child.context.events_grouped datetime_formats=child.context.datetime_formats %}
+        {% include "webikwa257/includes/events.html" with page=child events=child.context.events events_grouped=child.context.events_grouped datetime_formats=child.context.datetime_formats calendar_refs=child.context.calendar_refs %}
       {% endif %}
-      {% endfor %}
+    {% endfor %}
   {% endif %}
 {% endfor %}
