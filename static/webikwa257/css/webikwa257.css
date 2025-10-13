@@ -54,6 +54,10 @@ main #content {
   min-width: 300px;
 }
 
+main #content img {
+  max-width: 95%;
+}
+
 @media screen and (max-width: 600px) {
   main #content {
     order: 1;
