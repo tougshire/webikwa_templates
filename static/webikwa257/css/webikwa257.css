@@ -37,6 +37,26 @@ h1.pagetitle {
   margin-top: 0;
 }
 
+img.inline10px {
+  height: 10px;
+}
+
+img.inline12px {
+  height: 12px;
+}
+
+img.inline14px {
+  height: 14px;
+}
+
+img.inline16px {
+  height: 16px;
+}
+
+img.inline24px {
+  height: 24px;
+}
+
 main {
   display: flex;
   flex-wrap: wrap;
@@ -231,10 +251,13 @@ a.brand-logo {
   max-width: 95%;
 }
 
-footer div.disclaimer {
+.disclaimer {
   width: 50%;
-  margin: 1em auto;
+  margin: 1ex auto;
   border: 1px solid;
+  padding-top: 1ex;
+  padding-bottom: 1ex;
+
   border-color: var(--theme-dark-line-color);
 }
 

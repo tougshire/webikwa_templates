@@ -1,25 +1,16 @@
 from django.db import models
-from wagtail.admin.panels import (
-    FieldPanel,
-    MultiFieldPanel,
-    PublishingPanel
-)
-from wagtail.contrib.settings.models import (
-    BaseGenericSetting,
-    register_setting,
-)
-from wagtail.fields import RichTextField
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel, PublishingPanel
+from wagtail.contrib.settings.models import BaseGenericSetting, register_setting
+from wagtail.fields import RichTextField, StreamField
 from wagtail.models import (
     DraftStateMixin,
     PreviewableMixin,
     RevisionMixin,
     TranslatableMixin,
 )
-from wagtail.contrib.settings.models import (
-    BaseGenericSetting,
-    register_setting,
-)
 from wagtail.snippets.models import register_snippet
+from wagtailmarkdown.fields import MarkdownField
+
 
 @register_setting
 class NavigationSettings(BaseGenericSetting):
@@ -47,7 +38,11 @@ class FooterText(
     TranslatableMixin,
     models.Model,
 ):
-    body = RichTextField()
+
+    body = MarkdownField(
+        blank=True,
+        help_text="A markdown version of the body. Both this and the streamfield version body will be displayed if they have content",
+    )
 
     panels = [
         FieldPanel("body"),
