@@ -154,6 +154,10 @@ a.brand-logo {
     list-style-type: none;
     list-style-position: unset;
   }
+
+  .pagezone {
+    display:flex;
+  }
 }
 
 .horizontalbar li.menuitem,
@@ -240,6 +244,10 @@ a.brand-logo {
   padding-bottom: 0.5em;
   margin-bottom: 1em;
   border-bottom: 1px dotted var(--theme-dark-line-color);
+}
+
+.pagezone .article {
+  flex: 1;
 }
 
 .articleimage {

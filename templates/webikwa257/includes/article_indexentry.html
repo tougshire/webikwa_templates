@@ -4,7 +4,7 @@
   <div class="articletitle"><a href="{% pageurl article_page %}">{{ article_page.title }}</a></div>
   {% comment %}If the entire body should be displayed{% endcomment %}
 
-{% if forloop.parentloop.parentloop.counter|stringformat:"d" in page.full_body_groups %}
+{% if zone.full_body or forloop.parentloop.parentloop.counter|stringformat:"d" in page.full_body_groups %}
 
     {% for article_image in article_page.article_images.all %}
       {% if article_image.display_before_body %}
