@@ -1,3 +1,30 @@
+/* only wide screens like desktops */
+@media (min-width: 1000px) {
+  .horizontalbar nav ul {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    list-style-position: unset;
+  }
+
+  .pagezone {
+    display:flex;
+  }
+}
+
+/* only narrow screens like phones */
+@media screen and (max-width: 600px) {
+  main #content {
+    order: 1;
+  }
+  #main .sidebar {
+    order: 2;
+  }
+}
+
+/* all below is for everything - dektops, tablets, and phones */ 
+
 *,
 ::before,
 ::after {
