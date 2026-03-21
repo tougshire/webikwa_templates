@@ -185,6 +185,7 @@ a.brand-logo {
 
   .pagezone {
     display:flex;
+    gap:2em;
   }
 }
 
