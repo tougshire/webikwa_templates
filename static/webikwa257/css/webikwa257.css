@@ -27,6 +27,15 @@
     min-height: 100vh;
   }
 
+  .skip-link {
+    position: absolute;
+    top: -30px;
+  }
+
+  .skip-link:focus-visible {
+    top: 5px;
+  }
+
   header {
     border-bottom: 0.5em solid var(--theme-dark-line-color);
   }
@@ -96,6 +105,7 @@
 
 }
 
+
 @media (max-width: 600px) {
 
   html {
@@ -113,6 +123,15 @@
       "Segoe UI Symbol",
       "Noto Color Emoji";
       overflow-wrap: break-word;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -30px;
+  }
+
+  .skip-link:focus-visible {
+    top: 5px;
   }
 
   header {
