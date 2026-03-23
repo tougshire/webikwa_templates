@@ -49,7 +49,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
         <link rel="stylesheet" type="text/css" href="{% static 'webikwa257/css/'|add:template_settings.theme_color|add:'.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'webikwa257/css/webikwa257.css?ver=va3n' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'webikwa257/css/webikwa257.css?ver=va3nd' %}">
         {% if page.custom_css %}
           <style type="text/css">{{ page.custom_css }}</style>
         {% endif %}
@@ -76,6 +76,10 @@
           </div>
         {% endif %}
         <main id="main">
+          <div id="content">
+            {% block content %}
+            {% endblock content %}
+          </div>
           {% if template_settings.show_leftbar %}
             <div id="leftsidebar" class="sidebar">
               {% block leftsidebar %}
@@ -83,10 +87,6 @@
               {% endblock %}
             </div>
           {% endif %}
-          <div id="content">
-            {% block content %}
-            {% endblock content %}
-          </div>
           {% if template_settings.show_rightbar %}
             <div id="rightsidebar" class="sidebar">
               {% block rightsidebar %}
