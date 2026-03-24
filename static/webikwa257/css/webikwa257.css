@@ -114,13 +114,19 @@ footer ul li img {
   .pagezone {
     display: flex;
     flex-wrap: wrap;
-    gap: 1%;
     max-width:100%;
     justify-content: center;
+    padding-bottom: 1ex;
+    border-bottom: 1px solid var(--theme-dark-line-color)
+  }
+  .article:first-child {
+    border-left:0;
   }
   .article {
-    flex: 1 1 0px;
+    width:40%;
+    border-left:1em;
   }
+
   #leftsidebar {
     flex: 0 0 20%;
     width: 0;
