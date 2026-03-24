@@ -113,6 +113,7 @@ footer ul li img {
   }
   .pagezone {
     display: flex;
+    flex-wrap: wrap;
     gap: 1%;
     max-width:100%;
     justify-content: center;
