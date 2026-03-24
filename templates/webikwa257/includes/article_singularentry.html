@@ -2,86 +2,88 @@
 {% load wagtailmarkdown %}
 
 <h1>{{ page.title }}</h1>
-<p class="meta">{{ page.date }}</p>
+<div class="article">
+  <p class="meta">{{ page.date }}</p>
 
-{% with authors=page.authors.all %}
-  {% if authors %}
-    <h3>Posted by:</h3>
-    <ul>
-      {% for author in authors %}
-          <li style="display: inline">
-              {% image author.author_image fill-40x60 style="vertical-align: middle" %}
-              {{ author.name }}
-          </li>
+  {% with authors=page.authors.all %}
+    {% if authors %}
+      <h3>Posted by:</h3>
+      <ul>
+        {% for author in authors %}
+            <li style="display: inline">
+                {% image author.author_image fill-40x60 style="vertical-align: middle" %}
+                {{ author.name }}
+            </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  {% for article_image in page.article_images.all %}
+    {% if article_image.display_before_body %}
+      {% image article_image.image width-800 as article_image_image %}
+      <div class="articleimage">
+        <img src="{{ article_image_image.url }}" width="80%" alt="{{ article_image.alt_text }}">
+      </div>
+    {% endif %}
+  {% endfor %}
+
+  {% if page.body_md > "" %}
+      {{ page.body_md|markdown }}
+  {% endif %}
+
+  {% include_block page.body_sf %}
+
+  {% if page.embed_url %}
+    <iframe src="{{ page.embed_url }}" style="{{ page.embed_frame_style }}"></iframe>
+  {% endif %}
+
+  {% for article_image in page.article_images.all %}
+    {% if article_image.display_after_body %}
+      {% image article_image.image width-800 as article_image_image %}
+      <div class="articleimage">
+        <img src="{{ article_image_image.url }}" width="80%" alt="{{ article_image.alt_text }}">
+      </div>
+    {% endif %}
+  {% endfor %}
+
+
+
+
+  {% comment %}
+  show the gallery if
+  the editor wants to show the gallery and
+  either there is more than one image or the one image is not already shown as the mmain image
+  {% endcomment  %}
+  {% if page.show_gallery %}
+    {% if not page.show_main_image or page.gallery_images.count > 1 %}
+        {% for item in page.gallery_images.all %}
+          <div style="float: inline-start; margin: 10px">
+            {% image item.image fill-320x240 %}
+          </div>
+        {% endfor %}
+    {% endif %}
+  {% endif %}
+
+  {% if page.document %}
+    {% if page.show_doc_link %}
+      <div class="document">
+        <a href="{{ page.document.url }}" target="_blank">{% if page.document.title > "" %}{{ page.document.title }}{% else %}Document{% endif %}</a>({{ page.document.file_extension }})
+      </div>
+    {% endif %}
+  {% endif %}
+
+  {% if events %}
+    {% include "webikwa257/includes/events.html" with page=page %}
+  {% endif %}
+
+
+  {% if visible_tags %}
+    <div class="tags">
+      <h3>Tags</h3>
+      {% for tag in visible_tags %}
+        <a href="{{ page.get_parent.url }}?tag={{ tag }}"><button type="button">{{ tag }}</button></a>
       {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
-
-{% for article_image in page.article_images.all %}
-  {% if article_image.display_before_body %}
-    {% image article_image.image width-800 as article_image_image %}
-    <div class="articleimage">
-      <img src="{{ article_image_image.url }}" width="80%" alt="{{ article_image.alt_text }}">
     </div>
   {% endif %}
-{% endfor %}
-
-{% if page.body_md > "" %}
-    {{ page.body_md|markdown }}
-{% endif %}
-
-{% include_block page.body_sf %}
-
-{% if page.embed_url %}
-  <iframe src="{{ page.embed_url }}" style="{{ page.embed_frame_style }}"></iframe>
-{% endif %}
-
-{% for article_image in page.article_images.all %}
-  {% if article_image.display_after_body %}
-    {% image article_image.image width-800 as article_image_image %}
-    <div class="articleimage">
-      <img src="{{ article_image_image.url }}" width="80%" alt="{{ article_image.alt_text }}">
-    </div>
-  {% endif %}
-{% endfor %}
-
-
-
-
-{% comment %}
- show the gallery if
- the editor wants to show the gallery and
- either there is more than one image or the one image is not already shown as the mmain image
-{% endcomment  %}
-{% if page.show_gallery %}
-  {% if not page.show_main_image or page.gallery_images.count > 1 %}
-      {% for item in page.gallery_images.all %}
-        <div style="float: inline-start; margin: 10px">
-          {% image item.image fill-320x240 %}
-        </div>
-      {% endfor %}
-  {% endif %}
-{% endif %}
-
-{% if page.document %}
-  {% if page.show_doc_link %}
-    <div class="document">
-      <a href="{{ page.document.url }}" target="_blank">{% if page.document.title > "" %}{{ page.document.title }}{% else %}Document{% endif %}</a>({{ page.document.file_extension }})
-    </div>
-  {% endif %}
-{% endif %}
-
-{% if events %}
-  {% include "webikwa257/includes/events.html" with page=page %}
-{% endif %}
-
-
-{% if visible_tags %}
-  <div class="tags">
-    <h3>Tags</h3>
-    {% for tag in visible_tags %}
-      <a href="{{ page.get_parent.url }}?tag={{ tag }}"><button type="button">{{ tag }}</button></a>
-    {% endfor %}
   </div>
-{% endif %}

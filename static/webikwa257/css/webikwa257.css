@@ -66,6 +66,18 @@ a.brand-logo {
   color: var(--theme-headline-font-color);
 }
 
+.articletitle a {
+  text-decoration: none;
+}
+
+.article img {
+  width: 60%;
+  display:block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
 footer ul li img {
   height: 1.2em;
 }
