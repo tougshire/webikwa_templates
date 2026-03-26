@@ -120,11 +120,17 @@ footer ul li img {
     border-bottom: 1px solid var(--theme-dark-line-color)
   }
   .article:first-child {
-    border-left:0;
+    padding-left:0;
   }
   .article {
     width:40%;
-    border-left:1em;
+    padding-left:1em;
+  }
+
+  .singlearticle {
+    width:80%;
+    margin: 0 auto;
+    padding-left:1em;
   }
 
   #leftsidebar {
