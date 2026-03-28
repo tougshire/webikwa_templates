@@ -155,6 +155,17 @@ footer ul li img {
     width: 0;
     order: 3;
   }
+  footer {
+    text-align:center;
+  }
+  footer li {
+    list-style-type:none;
+  }
+  .disclaimer {
+    max-width:60%;
+    margin: 0 auto;
+    border:1px solid black;
+  }
 
 }
 
@@ -200,7 +211,13 @@ footer ul li img {
     border-bottom: 1px solid var(--theme-dark-line-color)
   }
 
-  footer ul li img {
-    height: 1.2em;
+  .disclaimer {
+    max-width:60%;
+    margin: 0 auto;
+    border:1px solid black;
+  }
+
+  footer li {
+    list-style-type: none;
   }
 }
