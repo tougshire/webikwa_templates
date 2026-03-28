@@ -116,15 +116,27 @@ footer ul li img {
     flex-wrap: wrap;
     max-width:100%;
     justify-content: center;
+  }
+  .article {
+    padding-left:1em;
     padding-bottom: 1ex;
     border-bottom: 1px solid var(--theme-dark-line-color)
   }
+
   .article:first-child {
     padding-left:0;
   }
-  .article {
+
+  .article.boldness_normal {
+    width:60%;
+  }
+
+  .article.boldness_normal {
     width:40%;
-    padding-left:1em;
+  }
+
+  .article.boldness_light {
+    width:30%;
   }
 
   .singlearticle {
@@ -182,6 +194,12 @@ footer ul li img {
   #rightsidebar {
     order 2;
   }
+
+  .article {
+    padding-bottom: 1ex;
+    border-bottom: 1px solid var(--theme-dark-line-color)
+  }
+
   footer ul li img {
     height: 1.2em;
   }
