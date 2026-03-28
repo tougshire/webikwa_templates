@@ -5,7 +5,7 @@
 {% block body_class %}template-articleindexpage{% endblock %}
 
 {% block content %}
-  {% with page=page.target_page.specific %}
-    {% include "webikwa257/includes/article_singularentry.html" %}
-  {% endwith %}
+
+              {% include "webikwa257/article_singular_include.html" %}
+ 
 {% endblock %}

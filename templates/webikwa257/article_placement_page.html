@@ -15,8 +15,7 @@
         <div class="pagezone">
           {% for placement in zone.placements %}
               {% with article_page=placement.article %}
-              {% comment %}{% include "webikwa257/includes/article_indexentry.html" %}{% endcomment %}
-              {% include "webikwa257/article_include.html" %}
+              {% include "webikwa257/article_index_include.html" %}
               {% endwith %}
           {% endfor %}
         </div>
