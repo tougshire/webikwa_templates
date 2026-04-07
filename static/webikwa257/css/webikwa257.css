@@ -71,12 +71,22 @@ a.brand-logo {
 }
 
 .article img {
+  clear:both;
   width: 60%;
+  padding-left:1em;
+  padding-right:1em;
   display:block;
   margin: 0 auto;
   text-align: center;
 }
 
+img.left {
+  float:left;
+}
+
+img.right {
+  float:right;
+}
 
 footer ul li img {
   height: 1.2em;
