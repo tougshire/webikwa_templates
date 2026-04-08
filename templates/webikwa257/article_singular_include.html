@@ -22,6 +22,10 @@
       {% include_block article_page.body_sf %}
     </div>
 
+    {% if embed_url %}
+    <iframe src="{{ embed_url }}" style="{{ embed_frame_style }}"></iframe>
+    {% endif %}
+
     {% for article_image in article_page.article_images.all %}
       {% if article_image.display_after_body %}
         {% image article_image.image width-800 as article_image_image %}
