@@ -1,6 +1,6 @@
 /* Divided into - */
 /* All Media */  
-/* @media (min-width: 601px) */
+/* @media () */
 /* @media (max-width: 600px) */
 
 *,
@@ -72,7 +72,6 @@ a.brand-logo {
 
 .article img {
   clear:both;
-  width: 60%;
   padding-left:1em;
   padding-right:1em;
   display:block;
@@ -80,13 +79,46 @@ a.brand-logo {
   text-align: center;
 }
 
-img.left {
+.sidecenter, .sidedefault {
+  float:none;
+}
+
+.sideleft {
   float:left;
 }
 
-img.right {
+.sideright {
   float:right;
 }
+
+.widthsmall {
+  width:10%;
+}
+
+.widthsmall {
+  width:25%;
+}
+
+.widthmediumsmall {
+  width:45%;
+}
+
+.widthmedium, .widthdefault {
+  width:60%;
+}
+
+.widthmediumlarge {
+  width:80%;
+}
+
+.widthlarge {
+  width:90%;
+}
+
+.widthverylarge {
+  width:100%;
+}
+
 
 footer ul li img {
   height: 1.2em;
