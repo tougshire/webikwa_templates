@@ -56,6 +56,11 @@ a.brand-logo {
   text-decoration: none;
 }
 
+#content {
+  padding-left:2em;
+  padding-right:2em;
+}
+
 
 .articletitle {
   font-family: "Rubik", sans-serif;
@@ -153,6 +158,7 @@ footer ul li img {
     flex: 3 0 50%;
     order: 2;
   }
+
   .pagezone {
     display: flex;
     flex-wrap: wrap;
