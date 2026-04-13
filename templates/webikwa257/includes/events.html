@@ -1,6 +1,6 @@
 {% load wagtailcore_tags %}
-
-    {% if calendar_refs|length > 1 %} 
+    {% if calendar_refs|length > 1 %}
+      {% if page.context.show_hide_calendars %}
         <div><a href="#" id="a_showhideshowhide">show/hide calendars</a></div>
         <ul id="ul_showhidecalendars">
         {% for ref in calendar_refs %}
@@ -9,6 +9,7 @@
             </li>
         {% endfor %}
         </ul>
+        {% endif %}
     {% endif %}
     {% regroup events by start_d as events_bydate %}
     {% for event_date in events_bydate %}
