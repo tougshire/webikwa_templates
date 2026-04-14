@@ -75,6 +75,10 @@ a.brand-logo {
   text-decoration: none;
 }
 
+.article div {
+  overflow:hidden;
+}
+
 .article img {
   clear:both;
   padding-left:1em;
