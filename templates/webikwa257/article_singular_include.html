@@ -1,10 +1,11 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 {% load wagtailmarkdown %}
+{% load template_settings %}
 
 <div class="article">
   <div class="articletitle"><h2>{{ article_page.title }}</h2></div>
 
-    {% for article_image in article_page.article_images.all %}
+ 1   {% for article_image in article_page.article_images.all %}
       {% if article_image.display_before_body %}
         {% image article_image.image width-800 as article_image_image %}
         <div class="articleimage">
@@ -35,4 +36,6 @@
       {% endif %}
     {% endfor %}
 
+    {{ template_settings.after_article|safe }} 
+     
 </div>
