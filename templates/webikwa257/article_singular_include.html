@@ -5,7 +5,7 @@
 <div class="article">
   <div class="articletitle"><h2>{{ article_page.title }}</h2></div>
 
- 1   {% for article_image in article_page.article_images.all %}
+    {% for article_image in article_page.article_images.all %}
       {% if article_image.display_before_body %}
         {% image article_image.image width-800 as article_image_image %}
         <div class="articleimage">
